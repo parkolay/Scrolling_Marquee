@@ -11,67 +11,94 @@ void updateCase()
   switch (Case)
     {
       case 1:
-            Serial.println("case #1");
-            TestString = String(" Please Take A Number ");
-            TestString.toCharArray(FirstMessage,BUF_SIZE);
-            strcpy(OutputMessage, FirstMessage);  //{" Please Take A Number " }
-            digitalWrite(7,LOW);
-            digitalWrite(8,LOW);
-            digitalWrite(4,HIGH);
-            Case = 2; //this will send it to the next case
+            // Serial.println("case #1");
+            // TestString = String(" Please Take A Number ");
+            // TestString.toCharArray(FirstMessage,BUF_SIZE);
+            // strcpy(OutputMessage, FirstMessage);  //{" Please Take A Number " }
+            // digitalWrite(7,LOW);
+            // digitalWrite(8,LOW);
+            // digitalWrite(4,HIGH);
+            // Case = 2; //this will send it to the next case
        break;
       
       case 2:
-            Serial.println("case #2");      
-            Serial.println((RandomNumber));
-            TestString = String(" Now Serving --> ");
-            TestString.toCharArray(FirstMessage,BUF_SIZE);
-            strcpy(OutputMessage, FirstMessage); //{" Now Serving --> " }now plus a random
-            strcat(OutputMessage,RandomNumber);   //add the "new" random number
-            digitalWrite(8,LOW);
-            digitalWrite(7,HIGH);
-            digitalWrite(4,LOW);
-            Case = 1; //this will send it back until User input changes
+            // Serial.println("case #2");      
+            // Serial.println((RandomNumber));
+            // TestString = String(" Now Serving --> ");
+            // TestString.toCharArray(FirstMessage,BUF_SIZE);
+            // strcpy(OutputMessage, FirstMessage); //{" Now Serving --> " }now plus a random
+            // strcat(OutputMessage,RandomNumber);   //add the "new" random number
+            // digitalWrite(8,LOW);
+            // digitalWrite(7,HIGH);
+            // digitalWrite(4,LOW);
+            // Case = 6; //this will send on until User input changes
         break;
       
       case 3:
-            Serial.println("case #3");
-            //TestString = String(" Out to Lunch "+String((char)232)+String((char)126)+String((char)232));
-            TestString = String(" Out to Lunch " );//my ascii bicycle joke may not be appreaciated
-            TestString.toCharArray(FirstMessage,BUF_SIZE);
-            strcpy(OutputMessage, FirstMessage);  //{" Out to Lunch "};
-            digitalWrite(8,LOW);
-            digitalWrite(7,HIGH);
-            digitalWrite(4,HIGH);
+            // Serial.println("case #3");
+            // //TestString = String(" Out to Lunch "+String((char)232)+String((char)126)+String((char)232));
+            // TestString = String(" Out to Lunch " );//my ascii bicycle joke may not be appreaciated
+            // TestString.toCharArray(FirstMessage,BUF_SIZE);
+            // strcpy(OutputMessage, FirstMessage);  //{" Out to Lunch "};
+            // digitalWrite(8,LOW);
+            // digitalWrite(7,HIGH);
+            // digitalWrite(4,HIGH);
         break;
       
       case 4:
-            Serial.println("case #4");
-            //TestString = String(" In A Meeting "+String((char)001));
-            TestString = String(" In A Meeting ");
-            TestString.toCharArray(FirstMessage,BUF_SIZE);
-            strcpy(OutputMessage, FirstMessage); //{" In A Meeting "};
-            digitalWrite(8,HIGH);
-            digitalWrite(7,LOW);
-            digitalWrite(4,LOW);
+            // Serial.println("case #4");
+            // //TestString = String(" In A Meeting "+String((char)001));
+            // TestString = String(" In A Meeting ");
+            // TestString.toCharArray(FirstMessage,BUF_SIZE);
+            // strcpy(OutputMessage, FirstMessage); //{" In A Meeting "};
+            // digitalWrite(8,HIGH);
+            // digitalWrite(7,LOW);
+            // digitalWrite(4,LOW);
         break;
       
       case 5:
-            Serial.println("case #5");
-                if (newMessageAvailable)
-                  {
-                    strcpy(OutputMessage, newMessage);
-                    newMessageAvailable = false;
-                  }
+            // Serial.println("case #5");
+            //     if (newMessageAvailable)
+            //       {
+            //         strcpy(OutputMessage, newMessage);
+            //         newMessageAvailable = false;
+            //       }
 
-            digitalWrite(8,HIGH);
-            digitalWrite(7,LOW);
-            digitalWrite(4,HIGH);
+            // digitalWrite(8,HIGH);
+            // digitalWrite(7,LOW);
+            // digitalWrite(4,HIGH);
        break;
-
-//        case 6://added this to see what the ascii charaters looked like on the matrix display
+      case 6:
+            //Serial.println("case #6"); 
+            itoa (hours, HourinASCII, 10);//turn that # into ascii
+            Serial.println(hours); 
+            Serial.println(HourinASCII);   
+            itoa(minutes,MininASCII,10);
+            Serial.println(minutes);
+            Serial.println(MininASCII);
+            itoa(seconds, SecinASCII,10); 
+            Serial.println(seconds); 
+            Serial.println(SecinASCII);             
+            // strcpy(OutputMessage,HourinASCII);   //add the hours     
+            // TestString = String(":");
+            // TestString.toCharArray(FirstMessage,BUF_SIZE);
+            // strcat(OutputMessage, FirstMessage); //{" Now Serving --> " }now plus a random
+            // itoa(minutes,MininASCII,3);
+            // strcat(OutputMessage,minutes);   //add the minutes
+            // TestString.toCharArray(FirstMessage,BUF_SIZE);
+            // strcat(OutputMessage, FirstMessage); //{" Now Serving --> " }now plus a random 
+            // itoa(seconds, SecinASCII,3);        
+            // strcat(OutputMessage,seconds);   //add the minutes
+            digitalWrite(8,LOW);
+            digitalWrite(7,HIGH);
+            digitalWrite(4,HIGH);
+            //Serial.println(OutputMessage); 
+            Case = 6; //this will send it back until User input changes
+            //Case = 1; //this will send it back until User input changes
+        break;
+//        case 7://added this to see what the ascii charaters looked like on the matrix display
 //               //left in for future use, code compiled but did not play well with display needs work
-//            Serial.println("case #6");
+//            Serial.println("case #7");
 //            
 //            for (int i = 1; i < 75; i++) 
 //              {
@@ -88,7 +115,8 @@ void updateCase()
         
       default:
             Serial.println("DEFAULT!");
-            Case = 1;
+            Case = 6;
+            //Case = 1;
         break;
     }// end of switch (Message)
 }//end of void updateCase()
